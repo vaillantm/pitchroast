@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PitchRater - Startup Pitch Rating Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1b2e;
+            --secondary-dark: #16213e;
+            --accent-dark: #0f0f0f;
+            --text-light: #ffffff;
+            --text-soft-blue: #64b5f6;
+            --accent-blue: #2196f3;
+            --success-green: #4caf50;
+            --warning-orange: #ff9800;
+            --error-red: #f44336;
+            --border-color: #2c3e50;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            color: var(--text-light);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(90deg, var(--accent-dark) 0%, var(--primary-dark) 100%);
+            padding: 16px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-soft-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: rgba(100, 181, 246, 0.1);
+            color: var(--text-soft-blue);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: var(--accent-blue);
+            color: var(--text-light);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .section {
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-soft-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(26, 27, 46, 0.8) 0%, rgba(22, 33, 62, 0.8) 100%);
+            border-radius: 16px;
+            margin-bottom: 64px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            background: linear-gradient(45deg, var(--text-light), var(--text-soft-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--secondary-dark);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-soft-blue);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--primary-dark);
+            color: var(--text-light);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            resize: vertical;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 200px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--accent-blue), var(--text-soft-blue));
+            color: var(--text-light);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Score Display */
+        .score-display {
+            text-align: center;
+            padding: 32px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            margin-top: 32px;
+        }
+
+        .score-number {
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--success-green);
+            margin-bottom: 16px;
+            text-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .score-label {
+            font-size: 18px;
+            color: var(--text-soft-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Leaderboard Table */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--secondary-dark);
+        }
+
+        .leaderboard-table th {
+            background: var(--primary-dark);
+            color: var(--text-soft-blue);
+            padding: 20px;
+            text-align: left;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .leaderboard-table td {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s ease;
+        }
+
+        .leaderboard-table tr:hover {
+            background: rgba(100, 181, 246, 0.05);
+        }
+
+        .rank {
+            font-weight: 700;
+            color: var(--text-soft-blue);
+            font-size: 18px;
+        }
+
+        .rank.gold { color: #ffd700; }
+        .rank.silver { color: #c0c0c0; }
+        .rank.bronze { color: #cd7f32; }
+
+        .score-cell {
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--success-green);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(90deg, var(--accent-dark) 0%, var(--primary-dark) 100%);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: var(--text-soft-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            gap: 32px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .score-number {
+                font-size: 48px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .leaderboard-table th,
+            .leaderboard-table td {
+                padding: 12px 8px;
+                font-size: 14px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">PitchRater</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#submit">Submit Pitch</a></li>
+                <li><a href="#leaderboard">Leaderboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <h1>Rate Your Startup Pitch</h1>
+            <p>Get instant feedback and scoring on your startup pitch. Compare with others and improve your presentation skills to win over investors.</p>
+        </section>
+
+        <div class="grid grid-2">
+            <!-- Submit Pitch Section -->
+            <section id="submit" class="section">
+                <div class="card">
+                    <h2 class="section-title">Submit Your Pitch</h2>
+                    <form class="pitch-form">
+                        <div class="form-group">
+                            <label for="pitchText" class="form-label">Your Startup Pitch</label>
+                            <textarea 
+                                id="pitchText" 
+                                class="form-textarea" 
+                                placeholder="Describe your startup idea, target market, business model, and what makes it unique. Be specific about your value proposition and how you plan to scale..."
+                                required
+                            ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="userName" class="form-label">Your Name</label>
+                            <input 
+                                type="text" 
+                                id="userName" 
+                                class="form-input" 
+                                placeholder="Enter your name"
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn">Analyze Pitch</button>
+                    </form>
+
+                    <!-- Score Display -->
+                    <div class="score-display" style="display: none;" id="scoreDisplay">
+                        <div class="score-number" id="scoreNumber">85</div>
+                        <div class="score-label">Pitch Score</div>
+                        <p style="margin-top: 16px; color: rgba(255, 255, 255, 0.8);">
+                            Great pitch! Strong value proposition with clear market opportunity.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Leaderboard Section -->
+            <section id="leaderboard" class="section">
+                <div class="card">
+                    <h2 class="section-title">Top Pitches</h2>
+                    <div class="table-container">
+                        <table class="leaderboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Rank</th>
+                                    <th>Name</th>
+                                    <th>Score</th>
+                                    <th>Pitch Preview</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="rank gold">🥇 1</span></td>
+                                    <td>Sarah Chen</td>
+                                    <td><span class="score-cell">94</span></td>
+                                    <td>AI-powered food waste reduction platform...</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="rank silver">🥈 2</span></td>
+                                    <td>Marcus Johnson</td>
+                                    <td><span class="score-cell">91</span></td>
+                                    <td>Blockchain-based supply chain transparency...</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="rank bronze">🥉 3</span></td>
+                                    <td>Emily Rodriguez</td>
+                                    <td><span class="score-cell">89</span></td>
+                                    <td>Virtual reality training for healthcare...</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="rank">4</span></td>
+                                    <td>David Kim</td>
+                                    <td><span class="score-cell">87</span></td>
+                                    <td>Smart home energy optimization system...</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="rank">5</span></td>
+                                    <td>Lisa Thompson</td>
+                                    <td><span class="score-cell">85</span></td>
+                                    <td>Sustainable packaging solutions for e-commerce...</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="rank">6</span></td>
+                                    <td>Ahmed Hassan</td>
+                                    <td><span class="score-cell">83</span></td>
+                                    <td>EdTech platform for personalized learning...</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="rank">7</span></td>
+                                    <td>Rachel Green</td>
+                                    <td><span class="score-cell">81</span></td>
+                                    <td>Mental health app with AI counseling...</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="rank">8</span></td>
+                                    <td>James Wilson</td>
+                                    <td><span class="score-cell">79</span></td>
+                                    <td>Autonomous drone delivery service...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="footer-text">© 2024 PitchRater. Helping startups perfect their pitch.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling and navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const target = this.getAttribute('href');
+                    if (target !== '#') {
+                        document.querySelector(target).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Form submission
+            const form = document.querySelector('.pitch-form');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreNumber = document.getElementById('scoreNumber');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const pitchText = document.getElementById('pitchText').value;
+                const userName = document.getElementById('userName').value;
+                
+                if (pitchText.trim() && userName.trim()) {
+                    // Simulate pitch analysis with random score
+                    const score = Math.floor(Math.random() * 30) + 70; // Score between 70-100
+                    
+                    scoreNumber.textContent = score;
+                    scoreDisplay.style.display = 'block';
+                    scoreDisplay.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Optional: Clear form
+                    // form.reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
