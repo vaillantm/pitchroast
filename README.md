@@ -1,7 +1,8 @@
 # Pitch Roast 🔥
 
 A brutally honest startup pitch feedback app built with pure HTML, CSS, and vanilla JavaScript frontend, powered by a Node.js Express backend.
-Click here to use it https://pitchroast.netlify.app/
+
+Click here to try it https://pitchroast.netlify.app/
 
 ![Design Screenshot 1](images/a1.PNG "Pitch Roast Design Screenshot 1")
 
