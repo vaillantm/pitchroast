@@ -2,6 +2,10 @@
 
 A brutally honest startup pitch feedback app built with pure HTML, CSS, and vanilla JavaScript frontend, powered by a Node.js Express backend.
 
+![Design Screenshot 1](images/a1.png "Pitch Roast Design Screenshot 1")
+
+![Design Screenshot 2](images/a2.png "Pitch Roast Design Screenshot 2")
+
 ## Features
 
 ### Frontend (Pure HTML/CSS/JS)
