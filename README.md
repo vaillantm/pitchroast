@@ -12,7 +12,7 @@ A brutally honest startup pitch feedback app built with pure HTML, CSS, and vani
 - **Leaderboard**: View best, worst, and recent roasts from the community
 - **Statistics**: Community stats including total roasts, average ratings, and top contributors
 - **Audio Playback**: Text-to-speech integration for roast responses
-- **Social Sharing**: Share your roasts with others
+
 
 ### Backend (Node.js + Express)
 - **RESTful API**: Clean endpoints for all frontend interactions
@@ -251,4 +251,3 @@ For questions or issues, please create an issue in the GitHub repository.
 
 ---
 
-Built with ❤️ and lots of ☕ for the startup community.
