@@ -46,7 +46,7 @@ const roastData = {
     { "keyword": "Loan", "roast": "Loan startup? Prepare for a bankruptcy lesson.", "rating": 28 },
     { "keyword": "Bike", "roast": "Bike startup? Spinning wheels, going nowhere.", "rating": 8 },
     { "keyword": "Car", "roast": "Car tech? You drive investors away.", "rating": 6 },
-    { "keyword": "Home", "roast": "Home startup? More like house of cards.", "rating": 31 },
+    { "keyword": "Home", "roast": "Home startup? More like house of cards.", "rating": 5 },
     { "keyword": "Data", "roast": "Data startup? Data error: idea not found.", "rating": 16 },
     { "keyword": "Social", "roast": "Social app? Socially awkward, more like.", "rating": 20 },
     { "keyword": "Green", "roast": "Green startup? Your idea's more toxic than helpful.", "rating": 5 },
