@@ -52,7 +52,7 @@ const roastData = {
     { "keyword": "Green", "roast": "Green startup? Your idea's more toxic than helpful.", "rating": 5 },
     { "keyword": "Health", "roast": "Health tech? Your app gives headaches.", "rating": 25 },
     { "keyword": "Chatbot", "roast": "Chatbot? More like chat-boring bot.", "rating": 7 },
-    { "keyword": "App", "roast": "App? Another useless icon on my phone.", "rating": 30 },
+    { "keyword": "App", "roast": "App? Another useless icon on my phone.", "rating": 7 },
     { "keyword": "Delivery", "roast": "Delivery? Delivering disappointment on time.", "rating": 12 },
     { "keyword": "Market", "roast": "Market startup? Just a flea market of ideas.", "rating": 18 },
     { "keyword": "Travel", "roast": "Travel tech? Your business plan took a detour.", "rating": 24 },
