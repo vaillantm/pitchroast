@@ -41,7 +41,7 @@ const roastData = {
     { "keyword": "Drone", "roast": "Drone startup? Sounds like a flying paperweight.", "rating": 10 },
     { "keyword": "Ride", "roast": "Ride-sharing? More like ride to nowhere.", "rating": 1 },
     { "keyword": "Sleep", "roast": "Sleep tech? Hope your product isn't a nightmare.", "rating": 15 },
-    { "keyword": "Pet", "roast": "Pet startup? Even your ideas need a walk.", "rating": 27 },
+    { "keyword": "Pet", "roast": "Pet startup? Even your ideas need a walk.", "rating": 16 },
     { "keyword": "Eco", "roast": "Eco-friendly? Your green is just envy.", "rating": 4 },
     { "keyword": "Loan", "roast": "Loan startup? Prepare for a bankruptcy lesson.", "rating": 28 },
     { "keyword": "Bike", "roast": "Bike startup? Spinning wheels, going nowhere.", "rating": 8 },
